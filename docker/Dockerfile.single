@@ -1,0 +1,16 @@
+# Single-stage build — for comparison only, NOT for production.
+#
+# This bundles JDK + Maven + source + build caches into the final image.
+# Result: ~900 MB image with a huge attack surface.
+
+FROM maven:3.9-eclipse-temurin-21
+
+WORKDIR /app
+
+COPY pom.xml .
+COPY src ./src
+
+RUN mvn clean package -DskipTests
+
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "target/app.jar"]
