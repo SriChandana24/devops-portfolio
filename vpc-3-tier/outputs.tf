@@ -13,3 +13,11 @@ output "private_subnet_id" {
 output "nat_gateway_ip" {
   value = aws_eip.nat.public_ip
 }
+
+output "s3_endpoint_id" {
+  value = aws_vpc_endpoint.s3.id
+}
+
+output "ec2_instance_id" {
+  value = aws_instance.private.id
+}
