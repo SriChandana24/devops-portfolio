@@ -1,0 +1,26 @@
+Opinionated Helm deploy pipeline.
+
+Provides a complete declarative pipeline (checkout → lint → optional
+approval → helm upgrade --install → rollout verify) callable from a
+one-line Jenkinsfile.
+
+<dl>
+  <dt><b>chart</b> (String, required)</dt>
+  <dd>Path to the Helm chart, e.g. <code>charts/myapp</code></dd>
+
+  <dt><b>releaseName</b> (String, required)</dt>
+  <dd>Helm release name</dd>
+
+  <dt><b>namespace</b> (String, required)</dt>
+  <dd>Target Kubernetes namespace</dd>
+
+  <dt><b>valuesFile</b> (String, optional)</dt>
+  <dd>Values overlay file. Default: <code>values.yaml</code></dd>
+
+  <dt><b>timeout</b> (String, optional)</dt>
+  <dd>Per-operation timeout. Default: <code>5m</code></dd>
+
+  <dt><b>approve</b> (Boolean, optional)</dt>
+  <dd>Require manual approval before deploy. Defaults to <code>true</code>
+      when namespace is <code>prod</code>, <code>false</code> otherwise.</dd>
+</dl>
