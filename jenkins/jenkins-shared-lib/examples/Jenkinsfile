@@ -1,0 +1,12 @@
+// Drop this into any service repo as Jenkinsfile.
+// The shared library provides the entire pipeline.
+
+@Library('jenkins-shared-lib') _
+
+deployHelm(
+    chart:       'charts/payments-api',
+    releaseName: 'payments-api',
+    namespace:   'prod',
+    valuesFile:  'values-prod.yaml',
+    timeout:     '10m'
+)
